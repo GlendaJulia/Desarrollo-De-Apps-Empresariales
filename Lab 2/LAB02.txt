@@ -1,0 +1,60 @@
+CREANDO UN DOMINIO LOCAL
+
+2. Agregando un nombre de dominio con resolucion de nuestro localhost
+	2.1 DOMINIO.PNG
+3. Probamos el link creado en el browser (WAMP)
+	3.1 PROBAR_LINK.PNG
+4. Modificando el archivo httpd-vhosts.conf
+	4.1 MODIFICARHTTPD.PNG
+5. Crear una nueva tabla "gestorimagenes"
+	5.1 CREANDO_TABLA.PNG
+
+
+CONFIGURANDO EL ENTORNO Y EL PROYECTO DE LARAVEL
+
+4. Visualizar lista de comandos disponibles en artisan
+	6.1 ARTISAN_COMANDOS.PNG
+5. Configurando el nombre de la aplicacion
+	5.1 CAMBIA_NOMBRE.PNG
+	5.2 VERIFICA_CAMBIO.PNG
+6. Configurar archivo .env
+	6.1 ENV.PNG
+CREANDO LOS MODELOS PARA EL PROYECTO
+8. Modificar el archivo Usuario.php
+	8.1 FOTOPHP.PNG
+
+EJERCICIO:
+Modifique el modelo USUARIO para que ahora, adicionalmente tenga 2 campos “pregunta” “respuesta”, 
+estos campos servirán para una posible recuperación de contraseña del mismo.
+	EJERCICIO.PNG
+
+CREANDO LOS CONTROLADORES
+1.Ubique la carpeta app-> http-> controllers.
+	1.1 CONTROLADORES.PNG
+21. Crearemos una función para recuperar la cuenta en caso el usuario no recuerde sus credenciales. 
+Agregue una función al final con el siguiente código: 
+	21.1 VALIDACION.PNG
+
+---------------------------------------------------------------------------------------------------------------
+OBSERVACIONES:
+1. Para ejecutar laravel es necesario agregar un nombre de dominio con resolucion de nuestro localhost.
+2. Para verificar que este se ha agregado tenemos que probar el link en el navegador dandonos como resultado la 
+pagina de Wamp.
+3. No pude usar PhpMyAdmin, porque supuestamente mi usuario root tenia una contraseña, para solucionar este error
+se tuvo que volver a instalar Wamp.
+4. Para actualizar el nombre de nuestra aplicacion se uso el comando php artisan app:name (nombre a actualizar).
+5. Cambiamos la mayoria de nombres de nuestros a español, ya que por defecto todos estan en ingles al momento
+de crearlos.
+
+CONCLUSIONES:
+1.En Laravel 5 los modelos se gestionan en la carpeta "app", colocando los archivos de nuestro modelo 
+sueltos ahí. 
+2.Desde los controladores querremos acceder a datos que mantienen los modelos: consultas, modificaciones, 
+etc. Esas operaciones se hacen a través de la clase del modelo que acabamos de implementar.
+3.Para trabajar en Laravel podríamos tener el esquema de la base de datos hecho a mano directamente con SQL 
+en el gestor de base de datos que estemos usando.
+4.Los modelos son uno de los componentes principales de las aplicaciones desarrolladas bajo el patrón MVC, 
+que tienen la responsabilidad de acceder a los datos, modificarlos, etc.
+5.Los modelos usan convenciones para que a Laravel se le facilite el trabajo y nos ahorre tanto líneas de 
+código como tiempo para relacionar más modelos.
+

@@ -1,0 +1,53 @@
+3. Probamos el Index de la aplicaion.
+	3.1 BIENVENIDAGLENDA.PNG
+9. Mostrar el formulario de inicio de sesion
+	9.1 FORMULARIO_INICIO_SESION.PNG
+1. Mostrar el formulario de fotos del usuario
+|	1.1 FORMULARIO_FOTOS.PNG
+	2.1 FORMULARIO_CREAR_FOTOS.PNG
+2. Probar URL inexistente
+	2.1 URL_INEXISTENTE.PNG
+3. Volver a probar URL inexistente
+	3.1 URL_INEXISTENTE_404.PNG
+
+
+Renderizando las vistas
+1. Ingresar a INICIO
+	1.1 INICIO.PNG
+2.Procure ingresar a “Iniciar Sesión” y luego a “Registrarse”.
+	2.1 FORM_INICIO_SESION.PNG
+	2.2 FORM_REGISTRO.PNG
+
+
+Creando las vistas
+1. Ingrese a la sub-carpeta de la carpeta VIEWS de nombre auth.
+	1.1 CARPETAS.PNG
+11. Probar Validacion Y Registrarse
+	11.1 VALIDACION.PNG
+	11.2 REGISTRARSE.PNG
+
+Creando Vista para recuperar la contraseña
+3. Abra el controlador de “Validacion”, busque la acción getRecuperar() y modifique su valor de retorno por:
+	3.1 RECUPERAR.PNG
+	3.2 FORMULARIO_RECUPERAR.PNG
+
+OBSERVACIONES:
+1. Es necesario fijarnos bien en as rutas que le damos a cada una de nuestras vistas, en mi caso, mi ruta
+ya no tenia /public/.
+2. Se tuvieron que modificar los archivos a español para entender mejor la creacion de nuestra aplicacion.
+3. Es necesario controlar los errores, ya que si el usuario inicia mal los datos y se le muestra los errores
+(como se nos mostro antes de manejar el error) puede ser que deje de usar nuestra aplicacion.
+4. Los controladores van dentro de las vistas indicando sus respectivos URLs.
+5. Si queremos mandar una vista en nuestro proyecto se usa la funcion View().
+
+CONCLUSIONES:
+1. Los controladores se almacenan en ficheros PHP en la carpeta app/Http/Controllers y normalmente se 
+les añade el sufijo Controller, por ejemplo UsuarioController.php
+2. Todos los controladores tienen que extender la clase base Controller. Esta clase viene ya creada por 
+defecto con la instalación de Laravel, la podemos encontrar en la carpeta app/Http/Controllers. 
+3. Una vez definido un controlador ya podemos asociarlo a una ruta. Para esto tenemos que modificar 
+el fichero de rutas rutas.php
+4. Las vistas en Laravel son la parte pública que el usuario de nuestro sistema va a poder ver, se 
+escriben en HTML junto con un motor de plantillas llamado Blade.
+5. Laravel contiene un template llamado app.blade.php, usualmente los templates contienen el head del 
+HTML, las ligas del CSS del sistema y una seccion exclusiva para los archivos Javascript.
