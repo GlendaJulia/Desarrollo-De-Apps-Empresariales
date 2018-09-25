@@ -22,10 +22,10 @@ class RecuperarContrasenaRequest extends Request {
 	public function rules()
 	{
 		return [
-			'email' => 'required|email|exists:usuarios,email',
-			'password' => 'required|min:6|confirmed',
-			'pregunta' => 'required',
-			'respuesta' => 'required',
+				'email' => 'required|email|exists:usuarios,email',
+				'password' => 'required|min:6|confirmed',
+				'pregunta' => 'required',
+				'respuesta' => 'required',
 		];
 	}
 
