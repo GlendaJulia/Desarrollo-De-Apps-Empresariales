@@ -1,15 +1,23 @@
+
 @extends('app')
+
+@if (Session::has('error'))
+	<div class="alert alert-danger">
+		<strong>Whoops</strong> Al parecer algo esta mal joven. <br><br>
+		{{Session::get('error')}}
+	</div>
+@endif
 
 @section('content')
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-8 col-md-offset-2">
 			<div class="panel panel-default">
-				<div class="panel-heading">Iniciar Sesión</div>
+				<div class="panel-heading">Iniciar Sesion</div>
 				<div class="panel-body">
 					@if (count($errors) > 0)
 						<div class="alert alert-danger">
-							<strong>Whoops!</strong> Al parecer algo esta mal.<br><br>
+							<strong>Whoops!</strong> Al parecer algo está mal.<br><br>
 							<ul>
 								@foreach ($errors->all() as $error)
 									<li>{{ $error }}</li>
@@ -17,7 +25,12 @@
 							</ul>
 						</div>
 					@endif
-
+					@if (Session::has('csrf'))
+						<div class="alert alert-danger">
+							<strong>Whoops</strong> Al parecer algo esta mal. <br><br>
+							{{Session::get('csrf')}}
+						</div>
+					@endif
 					<form class="form-horizontal" role="form" method="POST" action="/validacion/inicio">
 						<input type="hidden" name="_token" value="{{ csrf_token() }}">
 
@@ -39,7 +52,7 @@
 							<div class="col-md-6 col-md-offset-4">
 								<div class="checkbox">
 									<label>
-										<input type="checkbox" name="remember"> Recordarme
+										<input type="checkbox" name="remember"> Recuerdame
 									</label>
 								</div>
 							</div>
