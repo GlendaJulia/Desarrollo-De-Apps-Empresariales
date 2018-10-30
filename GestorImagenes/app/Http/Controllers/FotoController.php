@@ -1,5 +1,9 @@
 <?php namespace GestorImagenes\Http\Controllers;
 
+use GestorImagenes\Album;
+use GestorImagenes\Foto;
+use GestorImagenes\Http\Requests\MostrarFotosRequest;
+
 class FotoController extends Controller {
 
 
@@ -13,18 +17,21 @@ class FotoController extends Controller {
 		$this->middleware('auth');
 	}
 
-	public function getIndex()
-	{
-		return 'mostrando fotos del usuario';
+	public function getIndex(MostrarFotosRequest $request){
+
+		$id=$request->get('id');
+		$album=Album::find($id);
+		$fotos=$album->fotos;
+		return view('fotos.mostrar',['fotos'=>$fotos]);
 	}
 	/**
 	 * Show the application dashboard to the user.
 	 *
 	 * @return Response
 	 */
-	public function getCrearFoto()
+	public function getCrearFoto($id)
 	{
-		return 'formulario de crear fotos';
+		return view('fotos.crear-foto');
 	}
 	public function postCrearFoto()
 	{

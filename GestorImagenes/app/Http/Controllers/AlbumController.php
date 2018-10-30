@@ -1,5 +1,7 @@
 <?php namespace GestorImagenes\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
+
 class AlbumController extends Controller {
 
 
@@ -15,7 +17,9 @@ class AlbumController extends Controller {
 
 	public function getIndex()
 	{
-		return 'mostrando Albumes del usuario';
+		$usuario=Auth::user();
+		$albumes=$usuario->albumes;
+		return view('albumes.mostrar',['albumes'=>$albumes]);
 	}
 	/**
 	 * Show the application dashboard to the user.

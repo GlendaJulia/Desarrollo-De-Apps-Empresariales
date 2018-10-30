@@ -9,6 +9,13 @@
 	</div>
 @endif
 
+@if(Session::has('actualizado'))
+	<div class="alert alert-success">
+		<strong>Hecho!</strong> Cambios realizados <br><br>
+		{{Session::get('actualizado')}}
+	</div>
+@endif
+
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-8 col-md-offset-2">
