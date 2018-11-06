@@ -2,7 +2,10 @@
 
 use GestorImagenes\Album;
 use GestorImagenes\Foto;
+use Illuminate\Http\Request;
 use GestorImagenes\Http\Requests\MostrarFotosRequest;
+use GestorImagenes\Http\Requests\CrearFotoRequest;
+use Carbon\Carbon;
 
 class FotoController extends Controller {
 
@@ -22,20 +25,35 @@ class FotoController extends Controller {
 		$id=$request->get('id');
 		$album=Album::find($id);
 		$fotos=$album->fotos;
-		return view('fotos.mostrar',['fotos'=>$fotos]);
+		return view('fotos.mostrar',['fotos'=>$fotos,'id'=>$id]);
 	}
 	/**
 	 * Show the application dashboard to the user.
 	 *
 	 * @return Response
 	 */
-	public function getCrearFoto($id)
+	public function getCrearFoto(Request $request)
 	{
-		return view('fotos.crear-foto');
+		$id=$request->get('id');
+		return view('fotos.crear-foto',['id'=>$id]);
 	}
-	public function postCrearFoto()
+	public function postCrearFoto(CrearFotoRequest $request)
 	{
-		return 'almacenando foto';
+		$id=$request->get('id');
+		$imagen=$request->file('imagen');
+		$ruta='/img/';
+		$nombre=sha1(Carbon::now()).".".$imagen->guessExtension();
+		$imagen->move(getcwd().$ruta,$nombre);
+		Foto::create(
+			[
+				'nombre'=>$request->get('nombre'),
+				'descripcion'=>$request->get('descripcion'),
+				'ruta'=>$ruta.$nombre,
+				'album_id'=>$id,
+			]
+
+		);
+		return redirect("/validado/fotos?id=$id")->with('creada','La foto ha sido subida');
 	}
 	public function getActualizarFoto()
 	{
