@@ -1,0 +1,159 @@
+-------------------------------------------------LABORATORIO 04-------------------------------------------------
+1. Ingresamos a la ruta del directorio de nuestro proyecto en la ventana de comandos, para luego crear el archivo
+"CrearTablaAlbumes"
+	1.1 CREARTABLAALBUMES.PNG
+2. Hacemos lo mismo pero esta vez creamos el archivo "CrearTablaFotos"
+	2.1 CREARTABLAFOTOS.PNG
+3. Visualizamos los archivos en la carptea DataBase
+	3.1 DATABASEARCHIVOS.PNG
+4. Modificacion de "create_users_table.php"
+	4.1 CREATEUSERS.PNG
+5. Tambien se modifica "CrearTablaAlbumes"
+	5.1 CREARTABLAALBUMESMODIFICACION.PNG
+6. Tambien se modifica "CrearTablaFotos"
+	6.1 CREARTABLAFOTOSMODIFICACION.PNG
+7. Ejecutamos "php artisan migrate" para proceder con la migracion
+	7.1 MIGRACION.PNG
+8. Verificacion mediante phpMyAdmin, que las tablas se hayan creado correctamente en la Base de Datos
+	8.1 VERFICACION.PNG
+
+/////////////////////////////////////////////CREANDO SEEDERS/////////////////////////////////////////////
+
+1. Modificacion de DataBaseSeeder
+	1.1 MODIFICACIONSEEDER.PNG
+2. Creacion del archivo UsuariosSeeder
+	2.1 USUARIOSSEEDER.PNG
+3. Modificacion del archivo AlbumesSeeder
+	3.1 ALBUMESSEEDER.PNG
+4. Modificacion del archivo FotosSeeder
+	4.1 FOTOSSEEDER.PNG
+5. Ejecucion del comando "composer dumpautoload"
+	5.1 DUMPAUTOLOAD.PNG
+6. Ejecucion del comando "php artisan db:seed"
+	6.1 PHPARTISAN.PNG
+7. Explore la base de datos y responda:
+	7.1 Respuesta:Se inicializo la Base de Datos en la CLI  de Artisan, el comando ejecuta la clase de forma 
+	preterminada, al hacer esto se llenaron tambien los datos de las tablas, con los datos que le damos dentro del
+	bucle de cada Seeder para Create.
+/////////////////////////////////CREANDO MENSAJES Y PAGINAS DE EXCEPCION PERSONALIZADAS/////////////////////////////////
+1. Importacion de la Libreria en Handler.php
+	1.1 IMPORTACIONLIBRERIA.PNG
+2. Modificacion de la funcion render
+	2.1 RENDERMODIFICACION.PNG
+3. Ocasionamos un error general de cualquier tipo en modo debug
+	3.1 PRUEBAERROR.PNG
+4. Programaremos el modo DEBUG en FALSE para que este redireccione a la pagina de inicio.
+	4.1 DEBUGFALSE.PNG
+	4.2 INICIO.PNG
+5. Probando que el error se de por la excepcion de Token
+	5.1 CONTROLARERROR.PNG
+6. Probamos el formulario, eliminado el token de nuestro navegador e intentamos iniciar sesion con credenciales falsas
+	6.1 PROBANDOERROR.PNG
+///////////////////////////////////////////////ACCESO Y VALIDACIÓN DE USUARIOS///////////////////////////////////////////////
+1. Identificamos el error que se produce al momento de acceder con credenciales falsas
+	1.1 ERRORINICIOSESION.PNG
+2. Agregamos USE a ValidacionController
+	2.1 USEVALIDACION.PNG
+3. Cambiamos getLogouot por getSalida
+	3.1 GETSALIDA.PNG
+4. Modificamos la funcion Validator() de la Clase Registrar.php
+	4.1 VALIDATOR.PNG
+
+
+5. TAREA DE INVESTIGACION POR DEPENDENCIA EN LARAVEL-----------------------------------------------------------------------
+| La Inyección de Dependencias es un patrón de diseño orientado a objetos en el que se suministran objetos a una clase en  |
+| lugar de ser la propia clase quien cree el objeto. El término fue acuñado por primera vez por Martin Fowler. En la       |
+| práctica, consiste en pasar a los componentes de software sus dependencias mediante sus constructores, sus propiedades   |
+| o sus métodos setter.													   |
+| ///////////////////////////////////Ventajas de usar la Inyección de Dependencias///////////////////////////////////////  |
+| Como ventajas podemos nombrar:											   |
+|															   |
+| • Nuestro código se vuelve más modular y menos acoplado, ya que los submódulos no necesitan saber detalles de la 	   |
+| implementación de otros en tu código.            									   |
+| Gracias a esta modularidad es que podemos hacer tests unitarios más fácilmente, cada parte del programa se puede aislar  |
+| porque para realizar pruebas no tenemos que proveer a nuestros programas de las referencias reales, sino que podemos     |
+| fingirlas mediante mocks.												   |
+----------------------------------------------------------------------------------------------------------------------------
+
+6. Modificamos la funcion Create() de la Clase Registrar.php
+	6.1 CREATE.PNG
+7. Asignamos el modelo que se va a usar
+	7.1 MODELOUSUARIO.PNG
+8. ¿Cuáles fueron las credenciales utilizadas para acceder al sistema?
+	Fueron las de email y password
+9. Ingresamos al sistema
+	9.1 INGRESO.PNG
+10. Nos dirigimos al menu para registrarnos
+	10.1 REGISTRO.PNG
+11. Resultado
+	11.1 RESULTADO.PNG
+12. Verificacion de la creacion del Usuario en la Base de Datos
+	12.1 CREOUSUARIO.PNG
+13. Creacion de "IniciarSesionRequest"
+	13.1 INICIARSESIONREQUEST.PNG
+14. Verificamos que se haya creado en la carpeta de Requests
+	14.1 VERIFICACION.PNG
+15. Modificacion de "IniciarSesionRequest" 
+	15.1 MODIFICACIONIINICIARSESION.PNG
+
+		CREANDO LA FUNCIONALIDAD PARA RECUPERAR LA CONTRASEÑA POR PARTE DEL USUARIO
+
+1. Agregar el Request creado la funcion PostInicio
+	1.1 REQUESTPOSTINICIO.PNG
+2. En el controlador usamos el Request que acabamos de crear
+	2.1 VALIDACIONCONTROLLER.PNG
+3. ¿Cuál sería el proceso de crear un Request de nombre: “RecuperarContrasenaRequest”?
+	3.1 RECUPERARCONTRAREQUEST.PNG
+4. Definimos las datos que se necesitaran para recuperar unaa contraseña
+	4.1 RECUPERARRULESREQUEST.PNG
+5. Definimos la funcion authorize como TRUE
+	5.1 AUTORIZE.PNG
+6. Agregamos un NuevoRequest a nuestro controlador de Validacion
+	6.1 RECUPERARREQUESTCONTROLLER.PNG
+7. PROBANDO CONDIGO
+	7.1 Intente recuperar la contraseña con un correo válido, dos contraseñas correctas (con más de 5 caracteres),
+	pero con pregunta y/o respuesta equivocada. Anote los resultados
+		7.1.1 DATOSINCORRECTOS.PNG
+		7.1.2 Me dijo que la pregunta y respuesta no coincidian, por lo tanto no podia acceder aal la Venta
+	7.2 Intente recuperar la contraseña con todos los datos correctos. ¿Qué sucede?
+		7.2.1 DATOSCORRECTOS.PNG
+		7.2.2 VOLVERALOGUEAR.PNG
+		7.2.1 INGRESOEXITOSO.PNG
+		7.2.2 Cuando pasa esto se accede al sistema de manera correcta
+8. Imprimir errores en la Pantalla
+	8.1 MOSTRARIMAGEN_ERROR.PNG
+9. Mostrar mensaje de cambio de contraseña en Inicio
+	9.1 MOSTRARMENSAJE.PNG
+
+
+
+---------------------------------------------------OBSERVACIONES-------------------------------------------
+1. Se uso la encriptacion para recibir el Password del Usuario, esto porque a veces la gente usa las mismas
+contraseñas para diferentes aplicaciones web. Si alguien tiene acceso a la direccion del email y contraseña de
+uno de nuestros usuarios, probablemente pueda hacerlo en muchas aplicaciones mas.
+
+2. El comando COMPOSER DUMPAUTOLOAD sirve para refrescar o actualizar un archivp en el que se configuran
+los seeders.
+
+3. La inyección de dependencias puede hacer que escribas código más rápido y te quita preocupaciones de 
+tener que instanciar objetos tu mismo.
+
+4. Se pueden crear Request en una ventana CMD solo escribimos el codigo "php artisan make:request (Nombre)"
+
+5. Es necesario crear condiciones para los parametros, como usuario que tiene que ser minimo 5 letras, etc.
+
+---------------------------------------------------CONCLUSIONES-------------------------------------------
+1. Siempre hay que guardar las contraseñas encriptadas mediante un algoritmo de encriptacion para hacer
+imposible a alguien que acceda a una base de datos y conseguir la contraseña.
+
+2. Esto no solo para proteger a los usuarios frente a algun atacante sino tambien frente a los propios
+empleados de la aplicacion.
+
+3. Las migraciones son un tipo de control de versión para su base de datos. Permiten que un equipo modifique
+el esquema de la base de datos y se mantenga actualizado sobre el estado actual del esquema.
+
+4. la clase del controlador base de Laravel utiliza Requests, que proporciona un método conveniente para validar 
+la solicitud HTTP entrante con una variedad de reglas de validación potentes.
+
+5. Es importante controlar los errores que puedan ser cometidos por el usuario, su interfaz
+tiene que ser lo mas amigable posible, hablar en un lenguaje que pueda entender el mensaje.

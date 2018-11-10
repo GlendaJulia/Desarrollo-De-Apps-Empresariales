@@ -1,0 +1,74 @@
+----------------------------------------------------------LABORATORIO 05----------------------------------------------------
+1. Modificamos getEditarPerfil()
+	1.1 GETEDITARPERFIL.PNG
+2. En el archivo app.blade.php agregamos la opcion de editar al usuario en caso de que este loggeado
+	2.1 OPCIONEDITARUSUARIO.PNG
+3. Modificamos la vista actualizar.blade.php
+	3.1 MODIDICARACTUALIZARBLADE.PNG
+	3.1 MODIDICARACTUALIZARBLADE2.PNG
+4. Ingresamos al sistema y seleccionamos la opcion Actualizar Perfil
+	4.1 SELECCIONAROPCION.PNG
+	4.2 FORMULARIOACTUALIZAR.PNG
+5. Creamos un nuevo Request en la consola de comandos
+	5.1 EDITARPERFILREQUEST.PNG
+6. Modicamos el Request
+	6.1 MODIFICAMOSEDITARREQUEST.PNG
+7. Importamos el Request creado al controlador de Usuario
+	7.1 IMPORTARREQUEST.PNG
+8. Modificamos la funcion postEditarPerfil()
+	8.1 MODIFICARPOSTEDITARPERFIL.PNG
+9. En la vista de INICIO agregamos el codigo para imprimir el mensaje de que los cambios se guardaron exitosamente
+	9.1 VERACTUALIZACIONEXITOSA.PNG
+10. Comprobamos:
+	10.1 FORMULARIOACTUALIZARLLENO.PNG
+	10.2 ACTUALIZACIONEXITOSA.PNG
+11. Importacion de Auth
+	11.1 IMPORTAUTH.PNG
+12. Agregar link para ver albumes
+	12.1 VERALBUMES.PNG
+13. Crear mostrar para ALBUMES
+	13.1 MOSTRARALBUMES.PNG
+14. Comprobacion:
+	14.1 Si no se tiene algun Album pasa esto:
+		NOHAYALBUM.PNG
+	14.2 Si hay Albumes pasa esto:
+		SIHAYALBUM.PNG
+15. Creamos un Request para Mostrar las fotos:
+	15.1 REQUESTMOSTRARFOTOS.PNG
+16. Modificamos la funcion getIndex para el Controlador de Fotos
+	16.1 GETINDEXMODIFICACION.PNG
+17. COMPROBACION:
+	17.1 FOTOSDEALBUM.PNG
+18. Inspeccionar Elemento de Ver Fotos
+	18.1 INSPECCIONAR.PNG
+19. Modificamos el valor del id para el Album 1. El resultado sera el siguiente:
+	19.1 FOTOFINAL.PNG
+
+----
+Cada vez que importemos Auth lo hacemos para obtener los datos de usuario loggeado en nuestro Sistema
+
+Se pueden Crear Request manualmente, es decir, no es necesario hacerlo desde la ventana de comandos, pero 
+hacerlo desde la ventana de Comnados nos evita mucho trabajo, es decri este al crearlo ya nos da la plantilla.
+
+Al momento de Crear un Request este debe ser llamado al Controlador de la tabla a la que queremos acceder.
+
+El hecho de recibir los objetos de los que depende una clase por parámetro es lo que se conoce como inyección.
+
+Para que el inyector de dependencias sepa qué es lo que debe inyectar, definimos la clase del parámetro 
+$request que no es otra que la clase Request.
+
+
+
+Laravel nos facilita todos los datos de la solicitud actual a través HTTP Request, un objeto sobre el que 
+podremos consultar información sobre el cliente que realiza la solicitud y datos que pueda estar enviando.
+
+Para obtener una instancia de la solicitud HTTP actual a través de la inyección de dependencia, debe escribir
+la clase en el método de su controlador.
+
+Toda aplicación web recibe solicitudes para completar todo tipo de acciones. Cada solicitud que recibe el 
+servidor viene acompañada de una serie de datos, que se envían en el protocolo HTTP.
+
+En cuanto a Session, dado que las aplicaciones controladas por HTTP son sin estado, las sesiones proporcionan 
+una forma de almacenar información sobre el usuario en todas las solicitudes.
+
+El "controlador" de sesión define dónde se almacenarán los datos de sesión para cada solicitud.
