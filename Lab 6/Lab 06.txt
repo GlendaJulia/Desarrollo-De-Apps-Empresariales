@@ -1,0 +1,78 @@
+----------------------------------------------------------LABORATORIO 06----------------------------------------------------
+1. Modificamos la funcion getCrearAlbum
+	1.1 GETCREARALBUM.PNG
+2. Creamos la vista "crear-album.blade.php". Y le agregamos codigo para crear un album.
+	2.1 CREARALBUMBLADE.PNG
+3. Creamos el Request: "CrearAlbumRequest"
+	3.1 CREARALBUMREQUEST.PNG
+4. Referenciamos el controlador Album a su Modelo(Modelo del album). Luego en el controlador album, nos vamos a ubicar
+en la funcion postCrearAlbum() y lo modificamos
+	4.1 POSTCREARALBUM.PNG
+5. Insertamos codigo en la vista MOSTRARALBUM para la creacion del Album
+	5.1 MOSTRARALBUM.PNG
+6. Creamos un album:
+	6.1 CREARALBUM.PNG
+	6.2 VERMENSAJEDECREACION.PNG
+	6.3 VERALBUMCREADO.PNG
+
+INSERTAR FOTOS EN LA BASE DE DATOS
+
+1. Modificamos la funcion getIndex() para el controlador de Fotos. Este nos permitira visualizar las fotos.
+	1.1 GETINDEXFOTO.PNG
+2. Modificamos el codigo de la vista mostrar.blade.php de fotos.
+	2.1 MOSTRARFOTOS.PNG
+3. Creamos un Request de nosmbre CrearFotoRequest.
+	3.1 CREARFOTOREQUEST.PNG
+4. Creamos la vista crear-foto.blade.php en la carpeta de fotos.
+	4.1 CREARFOTOVISTA.PNG
+5. Modificamos la funcion getCrearFoto del controlador de fotos, para que retorne el id del album al que pertenecera
+la nueva foto
+	5.1 GETCREARFOTO.PNG
+6. Referenciamos los Request en la cabecera del documento.
+	6.1 REFERENCIAR.PNG
+7. Modificamos el controlador de fotos en la funcion postCrearFoto.
+	7.1 POSTCREARFOTO.PNG
+8. Referenciar la libreria Carbon.
+	8.1 LIBRERIACARBON.PNG
+9. Probamos los resultados.
+	9.1 CREARFOTO.PNG
+	9.2 VERFOTO.PNG
+
+
+----------------------------------------------------------------------------------------------------------------------------
+OBSERVACIONES
+
+Se logro hacer dinamico el proyecto de GESTORIMAGENES agregandole funciones como Crear fotos y mostrarlas.
+
+Es importante referenciar todos los Request que estamos creando en el controlador, para que las funciones puedan llamarlos
+	OBSERVACION.PNG
+
+Ya se cumplieron dos acciones basicas importantes de las BD (CRUD) las cuales son Crear y Leer.
+
+Es importante definir bien los nombres de las funciones con GET o POST como getCrearAlbum o postCrearFoto, de lo contrario
+no se podra llamar a las funciones.
+
+Tambien se debe de definir el tamaño de la foto que se almacenara en la BD.
+
+
+CONCLUSIONES
+
+Con la funcion with en el primer parametro podemos mandar una señal de que se completo exitosamente la operacion,
+por ejemplo en PostCrearAlbum se mando 'creado' y en mostrar.blade.php de albumes se dice que si 'creado' se
+cumple entonces que nos bote un div adicional donde nos muestre un mensaje de que ha sido creado.
+
+Cada get que se creo en el laboratorio tuvo de parametro el id y cada post tuvo su respectivo Request. Excepto
+el de CrearFoto ya que este necesitaba saber el id del album donde estara la foto para ello se usa un Request
+general.
+
+Con el parametro 'max' podemos definir el tamaño que permitira como maximo la foto, de no ser asi no podra
+acceder a la BD.
+
+Se uso el cifrado por si dos personas ponen una foto con el mismo nombre, lo unico que los diferenciara
+sera el cifrado sha1, el valor nunca se repite.
+
+Con la funcion move podemos copiar el archivo con el que estamos trabajando a las carpetas de nuestro
+servidor.
+
+Con file indicamos que para la variable '$imagen' sera un archivo el que esta recogiendo como dato.
+

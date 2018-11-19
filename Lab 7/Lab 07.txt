@@ -1,0 +1,102 @@
+----------------------------------------------------------LABORATORIO 07----------------------------------------------------
+1. Modificamos la funcion de getActualizarAlbum.
+	1.1 GETACTUALIZARALBUM.PNG
+2.Creamos la vista para actualizar el Album.
+	2.1 VISTAACTUALIZARALBUM.PNG
+3. A mostrar Album le daremos un boton para editar un Album.
+	3.1 BOTONEDITARALBUM.PNG
+4. ¿Que hicimos al agregar esa linea?
+	Agregamos un boton donde redirigira al album que vamos a actualizar, este tiene como dato el id del album
+5. Creamos un nuevo Request ActualizarAlbumRequest
+	5.1 ACTUALIZARALBUMREQUEST.PNG
+6. De que se encarga la funcion authorize() en este Request?
+	Se encarga de llamar el id del album del usuario en el que se encuentre actualmente, busca el album y si lo encuentra
+	retorna true, esto para verificar si esta el album para poder editarlo.
+7. Modificamos la funcion postActualizarAlbum.
+	7.1 POSTACTUALIZARALBUM.PNG
+8. ¿Que hizo este codigo mostrado?
+	Primero llama al Request de Actualizar album, luego busca el album con el id que retorna request, asimismo actualiza
+	el nombre, descripcion para que este pueda ser guardado y redirecciona al /validado/albumes junto a la señal de
+	actualizado, que indicara en la vista que el Album se actualizo correctamente.
+9. En la vista de mostrar albumes incluimos el codigo para indicar que el album se actualizo correctamente.
+	9.1 MOSTRARALBUM.PNG
+10. Probamos el programa:
+	10.1 ACTUALIZARALBUM1.PNG
+	10.2 ACTUALIZARALBUM2.PNG
+	10.3 ACTUALIZARALBUM3.PNG
+
+CREANDO FUNCIONALIDAD PARA EDITAR UNA FOTO - MOVER Y COPIAR ARCHIVOS
+
+1. Modificamos el codigo de la funcion getActualizarFoto de FotoController.
+	1.1 GETACTUALIZARFOTO.PNG
+2. ¿Que se hizo en esta funcion?
+	Primero recibe como parametro el id, y lo que hace con ello es buscar la foto en la BD, una vez encontrada se retorna
+	la vista de actualizar-foto con la respectiva foto que ha sido encontrada con el id.
+3. Creamos la vista actualizar-foto.
+	3.1 VISTAACTUALIZARFOTO.PNG
+4. Luego agregamos el boton de Editar Foto a la vista MostrarFoto
+5. Seguidamente, creamos el Request ActualizarFotoRequest
+	5.1 ACTUALIZARFOTOREQUEST.PNG
+6. ¿Que estamos haciendo en las funciones principales de este Request?
+	Lo que hacemos en authorize es buscar la foto, que exista dentro del album que indicamos y si se encuentra en el 
+	usuario loggeado, si este existe y pertenece tanto al album como al usuario entonce se retornara true.
+
+	Lo que hacemos en rules obtener el id de la foto (verificando que exista), dando tambien el nomre, descripcion,
+	y la imagen que sera como maximo de 20KB
+
+7. Modificamos el codigo de postActualizarFoto del controlador de Fotos
+	7.1 POSTACTUALIZARFOTO.PNG
+8. Explique linea a linea lo que el codigo pretende hacer.
+	8.1 Primero se busca la foto con el id obtenido del Request
+	8.2 Luego se actualiza el nuevo nombre obteniendo lo que tenemos el parametr nombre
+	8.3 Lo mismo pasa con la descripcion
+	8.4 Luego si el parametro imagen es un archivo entonces entra a la condicion
+		8.4.1 Se actualiza la imagen con el archivo que se encuentra en el parametro imagen
+		8.4.2 Luego definimos la ruta donde la copiaremos.
+		8.4.3 Y para el nombre le daremos una cadena binaria de la fecha actual seguida de la extencion propia de la imagen 
+	      	      real.
+		8.4.4 Guardaremos la ruta  de la foto, luego la foto sera copiada a la ruta.
+	8.5 Guardaremos los datos de la foto.
+	8.6 Retornaremos la vista de mostrar-fotos con el id de la foto dentro del album especifico. Luego retornaremos 
+	    la palabra editada que indicara que se edito exitosamente la foto.
+	
+9. Desde la línea 69 (el bloque if), ¿por qué tiene que verificarse que la ruta exista?
+	9.1 Es necesaria la verificacion, si la ruta existe de lo contrario no se podra realizar la operacion, si existe
+	    lo elimina.
+10. Modificamos la vista de mostrar-fotos para adicionar un div que indique que se acerto una foto correctamente.
+	10.1 MOSTRARFOTOSVISTA.PNG
+11. ¿Que hace el codigo de la vista?
+	Cada vez que se inserte una foto mostrara un div que indique que se acerto una foto correctamente.
+12. Probamos la funcionalidad:
+	12.1 EDITARFOTO1.PNG
+	12.2 EDITARFOTO2.PNG
+	12.3 EDITARFOTO3.PNG
+
+----------------------------------------------------------------------------------------------------------------------------
+OBSERVACIONES
+En la pregunta del punto 6. authorize permite saber si el album existe en el usuario loggeado, ya que puede ser que el album 
+exista pero no le pertenezca al usuario, y este seria un problema.
+
+Por defecto, ya viene instalado la libreria carcon al crear nuestro proyecto, ya que estaba investigando y en muchos casos
+para usarlo tenemos que instalarlo.
+
+A pesar de que usamos la libreria Carbon no fue nocesario usar sus metodos, estos nos permiten obtener el formato deseado.
+
+Algunas de las funciones que usamos son propias de LINUX como move o getcwd.
+
+La función file_exists() verifica si existe o no un archivo o directorio. Restorna TRUE o FALSE.
+
+
+CONCLUSIONES
+
+La función sha1() devuelve un valor como una cadena binaria de 40 dígitos hexadecimales. Si la cadena suministrada como 
+argumento es NULL, la función devuelve NULL.
+
+Carbon es un paquete que viene integrado en la versión 5 de laravel que nos permite crear y dar formato a fechas con unos 
+sencillos métodos.
+
+guessExtension () devuelve la extensión basada en el tipo.
+
+getcwd() obtiene el directorio actual en donde se esta trabajando.
+
+unlink () borra un archivo, este lo usamos si es que ya existe un archivo con el directorio que le damos.

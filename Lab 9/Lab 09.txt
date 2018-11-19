@@ -1,0 +1,69 @@
+----------------------------------------------------------LABORATORIO 09----------------------------------------------------
+1. Si un álbum va a ser eliminado desde la vista: Mostrar de los álbumes.¿Será necesario usar un método getEliminarAlbum?
+	No es necesario, ya que solo lo eliminaremos, solo seria necesario captar el id del album y presionar un boton
+	que nos permitira la accion, con este boton ya capturamos el id del album y del usuario.
+2. Creamos el Request EliminarAlbumRequest.
+	2.1 ELIMINARALBUMREQUEST.PNG
+3. En el controlador de Albumes, modificaremos la funcion postEliminarAlbum.
+	3.1 POSTELIMINARALBUM.PNG
+4. Modificaremos la vista de mostrar albumes, para poner al boton y la alerta de que el album ha sido eliminado en el caso,
+de que suceda.
+	4.1 MOSTRARALBUM.PNG
+5. Probamos el programa.
+	5.1 ELIMINARALBUM1.PNG
+	5.2 ELIMINARALBUM2.PNG
+
+ELIMINACION DE FOTOS
+
+1. Creamos el Request, EliminarFotoRequest:
+	1.1 ELIMINARFOTOREQUEST.PNG
+2. ¿Qué hacen las dos funciones importantes en este request?
+	Authorize() permite saber si existe el album dentro del usuario loggeado, para realizar la operacion.
+	En rules() solo necesitamos el id, con este podremos eliminar el Album
+3. Modificamos la funcion postEliminarFoto.
+	3.1 POSTELIMINARFOTO.PNG
+4. INVESTIGUE:
+	UNLINK(): Permite eliminar un archivo.
+	FILE_EXISTS(): Permite saber si existe una archivo.
+	REALPATH(): Devuelve la ruta de acceso absoluta. Esta función elimina todos los enlaces simbólicos (como '/./',
+	 '/../' y extra '/').
+5. Explique línea a línea la funcionalidad del código mostrado en la función.
+	5.1 Primero llamamos de parametro en la funcion al request de EliminarFotoRequest
+	5.2 Primero obtenemos el id de la foto a eliminar.
+	5.3 Luego obtenemos la ruta anterior.
+	5.4 Si la ruta existe
+	5.4.1 Entonces eliminaremos el archivo
+	5.5 Luego eliminamos la foto.
+	5.6 Retornamos a mostrar-foto una vez que se haya eliminado la foto, pero mandando 'eliminada' a la vista
+6. Creamos el boton de eliminar el foto en la vista de fotos
+	6.1 MOSTRARFOTOS1.PNG
+	6.2 MOSTRARFOTOS2.PNG
+7. Probamos la eliminacion de fotos.
+	7.1 ELIMINARFOTOS1.PNG
+	7.2 ELIMINARFOTOS2.PNG
+8. En el caso de que ya no exista ninguna foto se mostraran dos divs de alerta.
+	8.1 ELIMINARFOTOSVACIO.PNG
+
+----------------------------------------------------------------------------------------------------------------------------
+OBSERVACIONES
+Se cambio el estilo del boton ya que es una accion de eliminar, pienso que esto le da mas usabilidad al usuario, hablando
+en el tema de diseño de interfaces.
+
+Nos fue nocesario el metodo get para albumes y fotos ya que no necesitamos ir a una vista para eliminarlos.
+
+Al momento de eliminar el album la direccion cambia y eso quiere decir que hemos eliminado el album o foto.
+
+Para eliminar el album o foto solo nos basta con el id de este.
+
+Si eliminamos una foto o album y el inventario queda vacio entonces tendremos dos div de alerta.
+
+CONCLUSIONES
+
+Se logro completar la ultima accion basica de las BD que es DELETE, este nos permite borrar datos de nuestras colecciones
+
+Podemos eliminar el registro utilizando la fachada DB con el método delete().
+
+Con la funcion realpath() podemos obetener la ruta de acceso absoluta. Esta función elimina todos los enlaces simbólicos 
+(como '/./','/../' y extra '/').
+
+Luego de eliminar la pagina solo necesitamos una actualizacion para poder ver la nueva lista de albumes o fotos.
