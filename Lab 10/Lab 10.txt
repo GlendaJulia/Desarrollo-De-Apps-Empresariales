@@ -1,0 +1,78 @@
+----------------------------------------------------------LABORATORIO 10----------------------------------------------------
+1. Modificamos la vista app.blade.php
+	1.1 APPBLADE.PNG
+2. Modificamos mostrar.blade.php de albumes
+	2.1 MOSTRARBLADEALBUMES.PNG
+	2.2 MOSTRARBLADEALBUMES2.PNG
+3. Modificamos mostrar.blade.php de fotos
+	3.1 MOSTRARBLADEFOTOS.PNG
+	3.2 MOSTRARBLADEFOTOS2.PNG
+4. Prueba del Sistema:
+	4.1 COLECCIONDEALBUMES.PNG
+	4.2 COLECCIONDEFOTOS.PNG
+5. Modificamos postEliminarAlbum para eliminar archivos del servidor
+	5.1 POSTELIMINARALBUM.PNG
+6. Anote los detalles mas resaltantes del codigo anterior:
+	Con esta modificacion no solo eliminamos de la Base de Datos las fotos, sino tambien de nuestro servidor.
+
+COMANDO PARA RE-ALIMENTAR LA BASE DE DATOS
+1. Prueba del comando php artisan migrate:refresh --seed
+	1.1 COMANDO.PNG
+2. Probamos el sistema con la baase de Datos Re-alimentada
+	2.1 REGISTRO_NUEVO.PNG
+	2.2 INICIO_DE_NUEVO_USUARIO.PNG
+	2.3 VISUALIZACION_DE_FOTOS.PNG
+3. Luego se actualizo una foto
+	3.1 VISUALIZACION_DE_FOTOS_ACTUALIZADA.PNG
+
+----------------------------------------------------------------------------------------------------------------------------
+OBSERVACIONES
+1. Se observo que al ejecutar el comando pedido en el laboratorio se actualizaron los datos que habiamos omfidicado, como
+   las contraseñas, los nombres, las fotos, etc.
+	1.1 FOTO_OBSERVACION1.PNG
+
+2. La modificacion que hicimos al visualizar las fotos solo fue a nivel de ancho, ya que si agregamos una foto que tenga 
+   otro tamaño de largo pero el mismo de ancho se altera la visualizacion de fotos, no se ve bien hablando en el punto
+   de vista del usuario.
+	2.1 FOTO_OBSERVACION2.PNG
+
+3. Aunque se recalca que se ven mejor las fotos y los albumes si los vemos en cuadricula (no en lista como antes), ya que 
+   asi se le hace mas facil al usuario buscar una foto o album.
+
+4. Hubiera sido bueno agregar un buscador tanto en albumes como en fotos, por si el usuario tenia demasiados albumes o fotos
+
+5. Con las modificaciones hechas el sistema fue mas agradable, con mayor grado de usabilidad.
+
+CONCLUSIONES
+
+1. Con la modificacion hecha al eliminar albumes se deduce que hara que el sistema sea mas rapido, ya que el servidor no
+   se sobrecargaria de fotos guardadas.
+
+2. Segun la documentacion el comando "php artisan migrate:refresh --seed" revertira nuestras migraciones, re-crea
+   de manera efectiva nuestra DB.
+
+3. Es super importante que el sistema sea amigable para el usuario, se tiene que estudiar al usuario para ver que le parece
+   mejor, pero primero el sistema debe de ser funcional, es una mala practica realizar modificaciones de interfaz cuando
+   el sistema aun no tiene sus funciones bien hechas.
+
+4. Las migraciones son un tipo de control de versión para su base de datos. Permiten que un equipo modifique el esquema de 
+   la base de datos y se mantenga actualizado sobre el estado actual del esquema.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+CONCLUSIONES
+
